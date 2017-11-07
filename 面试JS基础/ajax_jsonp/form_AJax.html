@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>form</title>
+	<style type="text/css">
+		a{text-decoration: none;}
+	</style>
+</head>
+<body>
+	<!-- get 将数据放在URL(网址)里面来提交  安全性低 容量低,几K 获取数据
+	     post 将数据放在不是URL的地方       安全性一般 容量无限 上传数据 
+			GET 便于分享  如浏览帖子  可以缓存
+			POST 不便于分享 如用户注册
+	-->
+	<form action="http://www.viviarui.cn" method="post">
+		用户名：<input type="text" name="user">
+		密码：<input type="password" name="pass">
+		<input type="submit" value="提交">
+	</form>
+	<script type="text/javascript">
+		window.onload = function(){
+			
+		}	
+	</script>
+</body>
+</html>

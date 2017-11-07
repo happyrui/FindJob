@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+</head>
+<body>
+	<script>
+		// for (var i = 0; i < 4; i++) {
+		//     setTimeout(() => {
+		//         console.log(i);
+		//     }, 1000);
+		// }
+		// console.log(i);
+
+		var text = 'world';
+		var a = {
+		     text: 'hello',
+		  alert: function() {
+		  		// var that = this;
+		    // 	alert(that.text);
+		    	alert(this.text)
+		  }
+		};
+		// function l(){
+		// 	var text = 'you';
+		// 	var x = (function(){
+		// 		alert(this.text)
+		// 	})();
+		// }
+
+		// l();
+		a.alert();    //hello
+		// var b = a.alert;
+		// b();    //world
+
+		// function Dog(msg){
+		// 	this.msg = msg;
+		// 	this.eat = function(){
+		// 		alert(this.msg);
+		// 	}
+		// 	this.work = function(){
+		// 		setTimeout(this.eat,2000)
+		// 	}
+		// }
+		// var o = new Dog('bones');
+		// //o.eat();
+		// o.work();
+
+
+// var PI="PI的值为：";  
+//             var value="3.1415926";  
+//             function getPI()          
+//             {  
+//                 var value="3.14";//注意这里的局部变量  
+//                 alert((this===window)+"\n"+this.PI+this.parseFloat(this.value));//注意，这里是this.value不是value  
+//             }  
+//             window.getPI();//等于getPI()  
+//             
+
+var M = parseInt(readline());
+for(var i=0;i<M;i++){
+    strKu.push(readline());
+}
+var N = parseInt(readline());
+for(var i =0;i<N;i++){
+    str.push(readline());
+}
+var num=0;
+
+function strNum(){
+    for(var i=0;i<M;i++){
+        for(var j=0;j<N;j++){
+            if(strKu[i].indexOf(str[j])){
+                num++;
+            }
+        }
+	}
+    return num;
+}
+strNum();
+	
+
+			
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jsonp_yuansheng</title>
+	<style type="text/css">
+		a{text-decoration: none;}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		function createJs(sUrl){
+	        var oScript = document.createElement('script');
+	        oScript.type = 'text/javascript';
+	        oScript.src = sUrl;
+	        document.getElementsByTagName('head')[0].appendChild(oScript);
+		}
+	    createJs('js/jsonp_yuansheng.js');
+
+	    function box(json){
+	    	alert(json.name+":"+json.age);
+	    }	
+	</script>
+</body>
+</html>

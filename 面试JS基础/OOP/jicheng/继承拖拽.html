@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>oopTuozhuai</title>
+  <style type="text/css">
+    #div1{
+      width:200px;
+      height:200px;
+      background: red;
+      position: absolute;
+    }
+    #div2{
+      width:200px;
+      height:200px;
+      background: yellow;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2">asdf</div>
+<script src="Drag.js"></script>
+<script src="LimitDrag.js"></script>
+<script type="text/javascript">
+  window.onload = function () {
+    var div1 = new Drag('div1');
+    var div2 = new LimitDrag('div2');
+  };
+
+</script>
+</body>
+</html>

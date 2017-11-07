@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>事件类型</title>
+  <script src="EventUtil.js"></script>
+</head>
+<body>
+<div style="width:600px;height:300px;background-color: #ccc;" id="myDiv"></div>
+<script>
+//  var div=document.getElementById('myDiv');
+//  EventUtil.addHandler(div,'click',function(event){
+//    event = EventUtil.getEvent(event);
+//    alert("Client coordinates:"+event.clientX+','+event.clientY);
+//  });
+//  EventUtil.addHandler(window,'click',function(event){
+//    event = EventUtil.getEvent(event);
+//    alert("Page coordinates:"+event.pageX+','+event.pageY);
+//  })
+  EventUtil.addHandler(document,'mousewheel',function(event){
+    var event = EventUtil.getEvent(event);
+    alert(event.wheelDelta);
+  })
+</script>
+</body>
+</html>

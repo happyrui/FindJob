@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>事件委托</title>
+  <script src="EventUtil.js"></script>
+</head>
+<body>
+<ul id="lists">
+  <li id="list1">item1</li>
+  <li id="list2">item2</li>
+  <li id="list3">item3</li>
+  <li id="list4">item4</li>
+</ul>
+<script>
+  var oUl = document.getElementById('lists');
+//  EventUtil.addHandler(oUl,'click',function(event){
+//    //var event = EventUtil.getEvent(event);
+//    //var target = EventUtil.getTarget(event);
+//    if(event.target){
+//      alert("this is "+ event.target.id);
+//    }
+//  });
+//  EventUtil.addHandler(oUl,'click',function(event){
+//    var event = EventUtil.getEvent(event);
+//    var target = EventUtil.getTarget(event);
+//    switch(target.id){
+//      case "list1":
+//            alert("this is list1");
+//            break;
+//      case "list2":
+//            alert("this is list2");
+//            break;
+//      case "list3":
+//            alert("this is list3");
+//            break;
+//      case "list4":
+//            alert("this is list4");
+//            break;
+//    }
+//  });
+  oUl.addEventListener('click',func tion(event){
+    //被点击的是li元素
+    if(event.target && event.target.nodeName == "LI"){
+      alert(event.target.innerHTML);
+    }
+  })
+</script>
+</body>
+</html>

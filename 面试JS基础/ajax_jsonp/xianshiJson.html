@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<meta charset="utf-8">
+	<title>json显示</title>
+	<style>
+
+	</style>
+	<script src="js/jquery.js"></script>
+</head>
+<body>
+	<div id="myDiv"style="width: 400px;height:400px;background: #ccc"></div>
+	<script>
+	$(document).ready(function(){		
+		$('#myDiv').click(function(SucCallback){
+			$.ajax({
+				type:'GET',
+				url:'http://139.199.30.232/web/get_history.php?nodeId=1&sensorId=1&type=105',
+				datatype:'json',			
+				success:function(history){						
+					var data = JSON.parse(history);
+					for(var i = 0;i<data.history.length;++i){
+					   console.log(data.history[i].nodeId + ":" +data.history[i].uploadTime);
+					}			
+				}
+			});
+		});
+	})
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>继承</title>
+</head>
+<body>
+<script>
+  //对象冒充
+  /*构造函数使用this关键字给所有属性和方法赋值(即采用对象声明的构造函数方式)。
+  因为构造函数只是一个函数，所以可使A构造函数成为B的方法，//call，apply
+  然后调用它。B就会收到A的构造函数中定义的属性和方法。*/
+  function A(Color) {//创建超类型A
+    this.color = Color;
+    this.showColor = function () {
+      return this.color;
+    };
+  }
+  function B(Color,Name) {//创建子类型Ｂ
+    //A.call(this, Color);//对象冒充，给超类型传参
+    A.apply(this,[Color]);
+    this.name = Name;//新添加的属性
+    this.showName = function () {
+      return this.name;
+    }
+  }
+  var a = new A("blue");
+  var b = new B("red", "John");
+  document.write(a.showColor());//输出：blue
+  document.write(b.showColor());//输出：red
+  document.write(b.showName());//输出：John
+
+//  var a = 3;
+//  alert(a instanceof Object);
+</script>
+</body>
+</html>

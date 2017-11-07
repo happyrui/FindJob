@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  /*原型链的继承方法*/
+  /*这种方式无法共享,也不能子类型给超类型传递参数*/
+  function A() {//超类型A中必须没有参数
+    this.color = "red";
+    this.showColor = function () {
+      return this.color;
+    };
+  }
+  function B() {//子类型B
+    this.name = "John";
+    this.showName = function () {
+      return this.name;
+    };
+  }
+  B.prototype = new A();//子类型B继承了超类型A，通过原型，形成链条
+  var a = new A();
+  var b = new B();
+  document.write(a.showColor());//输出：red
+  document.write(b.showColor());//输出：red
+  document.write(b.showName());//输出：John
+</script>
+</body>
+</html>

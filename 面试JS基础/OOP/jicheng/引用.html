@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  var arr1 = [1,2,3];
+  var arr2 = [];
+
+  for(var i=0;i<arr1.length;i++){
+    arr2[i]=arr1[i];
+  }
+  arr2.push(4);
+  alert(arr1);   //1,2,3
+  alert(arr2);  //1,2,3,4
+
+  var arr3 = [1,2,3];
+  var arr4 = arr3;
+ //arr3和arr4都是引用类型，存储的是指向堆内存的指针，现在两者指向同一内存，
+ // 故push后，arr3=arr4;
+  arr4.push(4);
+  alert(arr3);  //1,2,3,4
+  alert(arr4);   //1,2,3,4
+</script>
+</body>
+</html>

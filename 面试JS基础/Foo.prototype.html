@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+  function Foo() {
+    getName = function () { alert (1); };       //构造函数方法
+    return this;
+  }
+  Foo.getName = function () { alert (2);};      //静态属性
+  Foo.prototype.getName = function () { alert (3);};    //增加原型方法
+  var getName = function () { alert (4);};   //函数变量表达式
+  function getName() { alert (5);}           //函数声明
+
+  //请写出以下输出结果：
+  Foo.getName();             //2  //访问Foo函数上的静态属性
+  getName();                 //4
+  // 执行getName函数，在4,5中，JS分为两步，预解析与解释执行。
+  // 函数表达式分为两步执行，首先是预解析，再是赋值，
+  // 而对于函数声明是直接解析与赋值，等JS再执行时，函数声明就不会再执行了，
+  // 也就是说函数表达式进行赋值，给getName重新赋值为4
+  //先提升变量声明，提升函数声明，覆盖var的声明，最终的赋值在此覆盖getName声明
+  Foo().getName();           //1
+  //Foo函数的第一句  getName = function () { alert (1); };  是一句函数赋值语句，注意它没有var声明，
+  // 所以先向当前Foo函数作用域内寻找getName变量，没有。再向当前函数作用域上层，
+  // 即外层作用域内寻找是否含有getName变量，找到了，也就是第二问中的alert(4)函数，
+  // 将此变量的值赋值为 function(){alert(1)}。
+  // 此处若依然没有找到会一直向上查找到window对象，
+  // 若window对象中也没有getName属性，就在window对象中创建一个getName变量
+  getName();                 //1
+  //直接调用getName函数，相当于 window.getName() ，
+  // 因为这个变量已经被Foo函数执行时修改了，遂结果与第三问相同，为1
+  new Foo.getName();         //2
+  //new (Foo.getName)();
+  //实际上将getName函数作为了构造函数来执行，遂弹出2
+  new Foo().getName();       //3
+  //(new Foo()).getName()
+  //而this在构造函数中本来就代表当前实例化对象，遂最终Foo函数返回实例化对象。
+  //之后调用实例化对象的getName函数，因为在Foo构造函数中没有为实例化对象添加任何属性，
+  // 遂到当前对象的原型对象（prototype）中寻找getName，找到了。遂最终输出3。
+  new new Foo().getName();   //3
+  //new ((new Foo()).getName)();
+  //实际上这里成员访问的优先级是最高的，因此先执行了 .getName，但是在进行左侧取值的时候，
+  // new Foo() 可以理解为两种运算：new 带参数（即 new Foo()）和函数调用（即 先 Foo() 取值之后再 new），
+  // 而 new 带参数的优先级是高于函数调用的，因此先执行了 new Foo()，或得 Foo 类的实例对象，
+  // 再进行了成员访问 .getName。
+
+  //url:http://www.cnblogs.com/xxcanghai/p/5189353.html
+  var foo = [1,2,3,4,5,6];
+  foo.length = 3;
+  alert(foo);
+  foo.length = 6;
+  alert(foo);
+</script>
+</body>
+</html>

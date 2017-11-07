@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ajaxDo</title>
+	<style type="text/css">
+		a{text-decoration: none;}
+	</style>
+</head>
+<body>
+	<input type="button" value="读取" id="btn1">
+	<script type="text/javascript">
+		window.onload = function(){
+			var oBtn = document.getElementById('btn1');
+
+			oBtn.onclick = function(){
+				//创建ajax对象
+				var request=null;
+				if(window.XMLHttpRequest){
+					request = new XMLHttpRequest();
+				}else{
+					request = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				//连接服务器
+				request.open("GET","http://ot31wbk51.bkt.clouddn.com/data3.txt",true);
+				//发送请求
+				request.send();
+				//接收返回
+				request.onreadystatechange = function(){
+					console.log(request.readyState)
+					console.log(request.status)
+					if(request.readyState==4 && request.status==200){
+						alert('成功：'+request.responseText);
+					}else{
+						alert('失败');
+					}
+				}
+			}
+		}	
+	</script>
+</body>
+</html>

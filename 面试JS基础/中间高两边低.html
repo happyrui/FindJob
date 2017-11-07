@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .oDiv{
+      width:60%;
+      margin:0 auto;
+    }
+  </style>
+</head>
+<body>
+<div class="oDiv">
+  输入这个数组:<input type="text" id="shuru"/><button id="btn">确认</button><br/>
+  输出为：<span id="zhi"></span>
+</div>
+<script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function(){
+      var arr = document.getElementById('shuru').value.split(',');
+      var res = arr.sort((a,b)=> a - b ).reverse().reduce((a,b,i) => (i % 2 ? a.push(b) : a. unshift (b), a), [])
+      document.getElementById('zhi').innerHTML = res;
+    }
+</script>
+</body>
+</html>

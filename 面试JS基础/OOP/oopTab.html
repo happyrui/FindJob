@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>面向对象的选项卡</title>
+  <style>
+    input{background: white;}
+    .active{background: yellow;}
+    div{
+      width:200px;
+      height:300px;
+      background: #eee;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<input type="button" class="active" value="1" />
+<input type="button" value="2" />
+<input type="button" value="3" />
+<div style="display: block;">111</div>
+<div>222</div>
+<div>333</div>
+<script>
+  window.onload= function(){
+    var a = new TabSwitch();
+  };
+  //改写：不能有函数嵌套，可以有全局变量
+  //    onload      构造函数
+  //    全局变量     属性
+  //    函数        方法
+  function TabSwitch(){
+    this.aBtn = document.getElementsByTagName('input');
+    this.aDiv = document.getElementsByTagName('div');
+    var i=0;
+    var _this = this;
+    for(i=0; i<this.aBtn.length; i++){
+      console.log(i);
+      this.aBtn[i].index = i;
+      this.aBtn[i].onclick = function(){
+        _this.tab(this);
+      };
+    }
+  }
+  TabSwitch.prototype.tab=function(oBtn){
+      for(i=0;i<this.aBtn.length;i++){
+        this.aBtn[i].className = '';
+        this.aDiv[i].style.display = 'none';
+      }
+      oBtn.className = 'active';
+      this.aDiv[oBtn.index].style.display = 'block';
+  }
+</script>
+</body>
+</html>

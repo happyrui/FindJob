@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>JSON的面向对象+命名空间</title>
+</head>
+<body>
+<script>
+  var p = {
+    name:'blue',
+    sex:'nan',
+    showName:function(){
+      alert('my name'+this.name);
+    },
+    showSex: function () {
+      alert('my sex'+this.sex);
+    }
+  }
+  p.showName();
+  p.showSex();
+
+  var miaov={};
+  miaov.common={
+    getClass:function(){
+
+    },
+    getName:function(){
+
+    }
+  }
+  miaov.go={
+    getClass:function(){
+
+    },
+    getName:function(){
+
+    }
+  }
+  miaov.go.getClass();
+  //baidu.search.t1.xx
+</script>
+</body>
+</html>

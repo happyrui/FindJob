@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>this会出问题的时候</title>
+</head>
+<body>
+<h1>第四组</h1>
+<script>
+  function Aaa(){
+    this.a=12;
+    //被定时器调用的this，指向window
+    //解决办法是在外面定义一个变量来储存当前this
+    //其实就是闭包
+    var _this = this;
+    setInterval(function(){
+      _this.show();
+    },1000);
+  }
+  Aaa.prototype.show = function(){
+    alert(this.a);
+  };
+  var obj = new Aaa();
+  //obj.show();
+</script>
+</body>
+</html>
